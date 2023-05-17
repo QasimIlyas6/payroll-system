@@ -1,5 +1,5 @@
 import React from "react";
-import { Nav } from "react-bootstrap";
+import { Nav, NavLink } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,106 +11,106 @@ import {
 	faFileInvoiceDollar,
 	faMoneyBillWave,
 	faBuildingShield,
+	faHome,
+	faUsers,
+	faBuilding,
+	faPlus,
+	faMinus,
+	faPlusSquare,
+	faMinusSquare,
 } from "@fortawesome/free-solid-svg-icons";
+import "../dashboard.css";
 
 const SideBar = () => {
 	return (
 		<Nav className="flex-column p-2" style={{ height: "100vh" }}>
 			<Nav.Item>
+				<LinkContainer to="/">
+					<NavLink className="nav-link">
+						<FontAwesomeIcon icon={faHome} className="icon" />
+						<span className="nav-text">Home</span>
+					</NavLink>
+				</LinkContainer>
+			</Nav.Item>
+			<Nav.Item>
 				<LinkContainer to="/employee-form">
-					<Nav.Link className="text-light">
+					<NavLink className="nav-link">
 						<FontAwesomeIcon icon={faUserTie} className="icon" />
-						Employee Form
-					</Nav.Link>
+						<span className="nav-text">Add Employee</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 			<Nav.Item>
 				<LinkContainer to="/employees">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faUserTie} className="icon" />
-						All Employees
-					</Nav.Link>
+					<NavLink className="nav-link">
+						<FontAwesomeIcon icon={faUsers} className="icon" />
+						<span className="nav-text">All Employees</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
-			{/* <Nav.Item>
-				<LinkContainer to="/employee-allowances">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faUserTie} className="icon" />
-						Employee Allowances
-					</Nav.Link>
-				</LinkContainer>
-			</Nav.Item>
-			<Nav.Item>
-				<LinkContainer to="/employee-deductions">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faUserTie} className="icon" />
-						Employee Deductions
-					</Nav.Link> 
-				</LinkContainer>
-			</Nav.Item> */}
 			<Nav.Item>
 				<LinkContainer to="/departments">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faBuildingShield} className="icon" />
-						Sections
-					</Nav.Link>
+					<NavLink className="nav-link">
+						<FontAwesomeIcon icon={faBuilding} className="icon" />
+						<span className="nav-text">Sections</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 			<Nav.Item>
 				<LinkContainer to="/allowances">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faMoneyBillWave} className="icon" />
-						Allowances
-					</Nav.Link>
+					<NavLink className="nav-link">
+						<FontAwesomeIcon icon={faPlus} className="icon" />
+						<span className="nav-text">Allowances</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 			<Nav.Item>
 				<LinkContainer to="/deductions">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faMoneyBill} className="icon" />
-						Deductions
-					</Nav.Link>
+					<NavLink className="nav-link">
+						<FontAwesomeIcon icon={faMinus} className="icon" />
+						<span className="nav-text">Deductions</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 			<Nav.Item>
 				<LinkContainer to="/designations">
-					<Nav.Link className="text-light">
+					<NavLink className="nav-link">
 						<FontAwesomeIcon icon={faBriefcase} className="icon" />
-						Designation
-					</Nav.Link>
+						<span className="nav-text">Designation</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 
 			<Nav.Item>
 				<LinkContainer to="/scale">
-					<Nav.Link className="text-light">
+					<NavLink className="nav-link">
 						<FontAwesomeIcon icon={faBalanceScale} className="icon" />
-						Scale
-					</Nav.Link>
+						<span className="nav-text">Scales</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 			<Nav.Item>
 				<LinkContainer to="/employees-payroll">
-					<Nav.Link className="text-light">
+					<NavLink className="nav-link">
 						<FontAwesomeIcon icon={faFileInvoiceDollar} className="icon" />
-						Payroll
-					</Nav.Link>
+						<span className="nav-text">PayRoll</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 			<Nav.Item>
 				<LinkContainer to="/employee-allowances">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faFileInvoiceDollar} className="icon" />
-						Employee Allowances
-					</Nav.Link>
+					<NavLink className="nav-link">
+						<FontAwesomeIcon icon={faPlusSquare} className="icon" />
+						<span className="nav-text">Employee Allowance</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 			<Nav.Item>
 				<LinkContainer to="/employee-deductions">
-					<Nav.Link className="text-light">
-						<FontAwesomeIcon icon={faFileInvoiceDollar} className="icon" />
-						Employee Deductions
-					</Nav.Link>
+					<NavLink className="nav-link">
+						<FontAwesomeIcon icon={faMinusSquare} className="icon" />
+						<span className="nav-text">Employee Deduction</span>
+					</NavLink>
 				</LinkContainer>
 			</Nav.Item>
 		</Nav>
