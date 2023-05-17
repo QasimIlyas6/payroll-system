@@ -1,0 +1,285 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,500;0,600;0,700;0,800;1,300;1,500;1,600;1,700&display=swap");
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
+
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	box-sizing: border-box;
+	background-color: #e2e8f0 !important;
+}
+
+code {
+	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+		monospace;
+}
+
+.welcome {
+	overflow: hidden;
+}
+
+.dashboard {
+	display: flex;
+}
+
+.icon {
+	margin-right: 0.8rem;
+}
+
+.download-btn {
+	background-color: #7c3aed !important;
+	color: #ffff;
+}
+
+/* main {
+	padding: 2rem;
+	width: 80%;
+} */
+
+/* .sidebar {
+	width: 20%;
+} */
+
+.btn-primary {
+	width: 100%;
+}
+
+.add-btn {
+	margin-top: 1.8rem;
+}
+
+.payslip-btn {
+	color: #fff !important;
+	font-size: 10px;
+	border: none;
+	background-color: #7c3aed;
+	width: 50px;
+	height: 20px;
+	margin-right: 8px;
+}
+br {
+	content: "";
+	margin: 2em;
+	height: 1em;
+	display: block;
+	font-size: 24%;
+}
+
+thead {
+	background-color: #0ea5e9;
+	color: #f7f7f7;
+}
+
+thead th {
+	font-size: 14px;
+	padding: 8px !important;
+}
+
+tbody tr td {
+	padding: 10px !important;
+}
+
+.dropdown-container {
+	display: flex;
+	align-items: center;
+}
+
+.dropdown-container select {
+	flex: 1;
+}
+
+.dropdown-container svg {
+	margin-left: 5px;
+}
+
+.dropdown-container i {
+	position: relative;
+}
+
+#my-form-id .form-control:focus {
+	border: none;
+	box-shadow: none;
+	background-color: transparent;
+}
+
+/* -- change form control boostrap style -- */
+
+.nav-tabs .nav-link.active {
+	background-color: #007bff;
+	color: #fff;
+}
+
+.layout-grid {
+	display: grid;
+	grid-template-rows: 250px 1fr;
+	grid-template-areas: "sidebar main";
+	gap: 50px;
+}
+/* In your CSS file */
+.sticky-nav {
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: 100%;
+	z-index: 1;
+	grid-area: sidebar;
+}
+
+.sidebar {
+	position: fixed;
+	top: 60px;
+	bottom: 0;
+	left: 0;
+	width: 250px;
+	background-color: #1f2937;
+	color: #fff;
+	z-index: 1;
+	padding-top: 20px;
+}
+
+main {
+	position: relative;
+	top: 100px;
+	left: 300px;
+	width: 72rem;
+	padding-bottom: 8rem;
+	margin-top: 1.5rem;
+}
+
+.search-bar {
+	display: flex;
+	align-items: center;
+	width: 300px;
+	padding: 8px;
+	border: 1px solid #60a5fa;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	outline: none;
+}
+
+.search-bar input[type="text"] {
+	flex-grow: 1;
+	border: none;
+	font-size: 14px;
+}
+
+.search-bar input[type="text"]::placeholder {
+	color: #999;
+}
+
+.search-bar:focus,
+.form-control:focus {
+	border-color: #60a5fa !important;
+	box-shadow: 0 0 0 1px #60a5fa !important;
+}
+
+tbody {
+	overflow-y: scroll;
+	max-height: 400px;
+}
+
+strong {
+	color: #1f2937;
+	font-weight: 600 !important;
+}
+
+.payroll-table {
+	display: flex;
+	align-items: center;
+}
+
+.payroll-table td {
+	text-align: center;
+}
+
+.payroll-particulars {
+	text-align: left;
+}
+
+.payroll-table-data {
+	text-align: center;
+	vertical-align: middle;
+}
+/* .secondary-heading {
+	text-align: center;
+} */
+
+.alert-container {
+	position: fixed;
+	top: 70px;
+	right: 20px;
+	z-index: 9999;
+}
+
+.alert-content {
+	width: auto !important;
+}
+
+.alert-enter {
+	opacity: 0;
+	transform: translateX(100%);
+}
+
+.alert-enter-active {
+	opacity: 1;
+	transform: translateX(0%);
+	transition: opacity 500ms, transform 500ms;
+}
+
+.alert-exit {
+	opacity: 1;
+	transform: translateX(0%);
+}
+
+.alert-exit-active {
+	opacity: 0;
+	transform: translateX(100%);
+	transition: opacity 500ms, transform 500ms;
+}
+
+.loader {
+	display: inline-block;
+	position: relative;
+	width: 80px;
+	height: 80px;
+}
+
+.circle1,
+.circle2,
+.circle3 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	animation: loader 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.circle1 {
+	animation-delay: -0.32s;
+}
+
+.circle2 {
+	animation-delay: -0.16s;
+}
+
+@keyframes loader {
+	0% {
+		opacity: 1;
+		transform: translate(-50%, -50%) scale(1);
+	}
+	100% {
+		opacity: 0.2;
+		transform: translate(-50%, -50%) scale(1.5);
+	}
+}
+
+.info-item {
+	font-size: 1rem;
+}
