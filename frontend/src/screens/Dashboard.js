@@ -1,53 +1,56 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { Card, Col, Row } from "react-bootstrap";
+import StatisticCard from "../components/Card";
+import {
+	faBuildingCircleCheck,
+	faMinusSquare,
+	faPlusSquare,
+	faUsers,
+} from "@fortawesome/free-solid-svg-icons";
 
-const ProgressCard = ({ title, value, icon, bgColor }) => {
-	return (
-		<Card className="h-100" style={{ backgroundColor: bgColor }}>
-			<Card.Body>
-				<Row className="align-items-center">
-					<Col md={8}>
-						<Card.Title className="text-white">{title}</Card.Title>
-						<Card.Text className="text-white">
-							{value} <small className="text-muted">items</small>
-						</Card.Text>
-					</Col>
-					<Col md={4} className="text-center">
-						<FontAwesomeIcon icon={icon} size="4x" className="text-white" />
-					</Col>
-				</Row>
-			</Card.Body>
-			<Card.Footer className="d-flex align-items-center justify-content-between">
-				<span className="text-white font-weight-bold">View Details</span>
-				<FontAwesomeIcon icon={faArrowRight} className="text-white" />
-			</Card.Footer>
-		</Card>
-	);
-};
+const Dashboard = (props) => {
+	const { departmentList, employeeList } = props;
 
-const Dashboard = () => {
+	const { employees } = employeeList;
+	const { departments } = departmentList;
+
 	return (
-		<div className="container my-5">
-			<Row>
-				<Col md={6}>
-					<ProgressCard
-						title="Allowances"
-						value={10}
-						icon={["fas", "money-check-alt"]}
-						bgColor="#6C5B7B"
+		employees &&
+		departments && (
+			<div className="container my-1">
+				<p
+					style={{ fontSize: "24px", backgroundColor: "#f8f8f8" }}
+					className="p-3 border rounded mb-4"
+				>
+					Welcome to the Board of Intermediate and Secondary Education Payroll
+					Dashboard! 😍
+				</p>
+				<div className="d-flex justify-content-between flex-wrap align-item-center">
+					<StatisticCard
+						message="Total Employees"
+						value={employees.length}
+						icon={faUsers}
+						bgColor={"#007bff"}
 					/>
-				</Col>
-				<Col md={6}>
-					<ProgressCard
-						title="Deductions"
-						value={5}
-						icon={["fas", "hand-holding-usd"]}
-						bgColor="#C06C84"
+					<StatisticCard
+						message="Total Sections"
+						value={departments.length}
+						icon={faBuildingCircleCheck}
+						bgColor={"#06b6d4"}
 					/>
-				</Col>
-			</Row>
-		</div>
+					<StatisticCard
+						message="Total Allowances"
+						value={802324}
+						icon={faPlusSquare}
+						bgColor={"#22c55e"}
+					/>
+					<StatisticCard
+						message="Total Deductions"
+						value={988392}
+						icon={faMinusSquare}
+						bgColor={"#f43f5e"}
+					/>
+				</div>
+			</div>
+		)
 	);
 };
 

@@ -5,19 +5,16 @@ import { LinkContainer } from "react-router-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faUserTie,
-	faMoneyBill,
 	faBriefcase,
 	faBalanceScale,
 	faFileInvoiceDollar,
-	faMoneyBillWave,
-	faBuildingShield,
-	faHome,
 	faUsers,
 	faBuilding,
 	faPlus,
 	faMinus,
 	faPlusSquare,
 	faMinusSquare,
+	faDashboard,
 } from "@fortawesome/free-solid-svg-icons";
 import "../dashboard.css";
 
@@ -27,8 +24,8 @@ const SideBar = () => {
 			<Nav.Item>
 				<LinkContainer to="/">
 					<NavLink className="nav-link">
-						<FontAwesomeIcon icon={faHome} className="icon" />
-						<span className="nav-text">Home</span>
+						<FontAwesomeIcon icon={faDashboard} className="icon" />
+						<span className="nav-text">Dashboard</span>
 					</NavLink>
 				</LinkContainer>
 			</Nav.Item>

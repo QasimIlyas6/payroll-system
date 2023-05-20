@@ -3,8 +3,9 @@ import {
 	createDepartment,
 	deleteDepartment,
 	getDepartments,
+	updateDepartment,
 } from "../controllers/departmentController.js";
-import { getDeductionById } from "../controllers/deductionController.js";
+import { getDepartmentById } from "../controllers/departmentController.js";
 import { admin, protect } from "../middlewares/authMddleware.js";
 
 const router = express.Router();
@@ -17,6 +18,7 @@ router
 router
 	.route("/:id")
 	.delete(protect, admin, deleteDepartment)
-	.get(protect, getDeductionById);
+	.get(protect, getDepartmentById)
+	.put(protect, admin, updateDepartment);
 
 export default router;

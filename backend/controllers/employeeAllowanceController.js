@@ -34,11 +34,8 @@ const getEmployeeAllowanceById = asyncHandler(async (req, res) => {
 // @access  Private/Admin
 const createEmployeeAllowance = asyncHandler(async (req, res) => {
 	const { employeeId, allowanceId, amount } = req.body;
-	console.log("body: ", req.body);
 
 	const employee = await EmployeeAllowance.findOne({ employeeId });
-
-	console.log("employee: ", employee);
 
 	if (employee) {
 		// check if the allowance already exists in the allowances array
@@ -47,7 +44,7 @@ const createEmployeeAllowance = asyncHandler(async (req, res) => {
 		);
 
 		if (allowanceExists) {
-			res.status(404);
+			res.status(199);
 			throw new Error("Allowance already added to this employee");
 		}
 

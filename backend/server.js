@@ -15,6 +15,7 @@ import employeeRoutes from "./routes/employeeRoutes.js";
 import employeeAllowanceRoutes from "./routes/employeeAllowanceRoutes.js";
 import employeeDeductionRoutes from "./routes/employeeDeductionRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import payrollRoutes from "./routes/payrollRoutes.js";
 
 dotenv.config();
 
@@ -38,6 +39,7 @@ app.use("/api/deductions", deductionRoutes);
 app.use("/api/employees", employeeRoutes);
 app.use("/api/employee-allowances", employeeAllowanceRoutes);
 app.use("/api/employee-deductions", employeeDeductionRoutes);
+app.use("/api/payrolls", payrollRoutes);
 
 // const __dirname = path.resolve();
 // app.use("/uploads", express.static(path.join(__dirname, "/uploads")));

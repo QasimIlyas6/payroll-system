@@ -36,7 +36,6 @@ const AllowanceListScreen = ({ allowanceList }) => {
 		// call back funtion
 		return () => {
 			if (allowanceCreateSuccess || allowanceCreateError) {
-				console.log("allowance reset");
 				dispatch({ type: ALLOWANCE_CREATE_RESET });
 			}
 		};

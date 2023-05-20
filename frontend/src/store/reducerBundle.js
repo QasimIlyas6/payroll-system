@@ -69,6 +69,13 @@ import {
 	bankDetailsReducer,
 	bankUpdateReducer,
 } from "./Reducers/bankReducer";
+import {
+	payrollCreateReducer,
+	payrollDeleteReducer,
+	payrollDetailsReducer,
+	payrollListReducer,
+	payrollUpdateReducer,
+} from "./Reducers/payrollReducer";
 
 // combine reducers from state
 const reducerBundle = {
@@ -141,6 +148,13 @@ const reducerBundle = {
 	employeeDeductionList: employeeDeductionListReducer,
 	employeeDeductionDelete: employeeDeductionDeleteReducer,
 	employeeDeductionUpdate: employeeDeductionUpdateReducer,
+
+	// payroll reducers
+	payrollCreate: payrollCreateReducer,
+	payrollDetails: payrollDetailsReducer,
+	payrollList: payrollListReducer,
+	payrollDelete: payrollDeleteReducer,
+	payrollUpdate: payrollUpdateReducer,
 };
 
 export default reducerBundle;

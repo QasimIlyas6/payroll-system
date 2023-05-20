@@ -198,32 +198,27 @@ const EmployeeList = (props) => {
 											</td>
 											<td>{employee.basicPay}</td>
 											<td>{employee.status}</td>
-											<td>
+											<td className="d-flex align-item-center">
 												<LinkContainer
 													to={`/employee-pay-slip/${employee._id}`}
-													style={{ color: "#1e3152", paddingRight: "6px" }}
+													style={{ color: "#1e3152", paddingRight: "3px" }}
 												>
 													<button type="button" className="payslip-btn">
-														Pay Slip
+														Payslip
 													</button>
 												</LinkContainer>
-												<div>
-													<LinkContainer
-														to={`/employee/edit/${employee._id}`}
-														style={{ color: "#34d399", paddingRight: "6px" }}
-													>
-														<FontAwesomeIcon
-															icon={faPenToSquare}
-															role="button"
-														/>
-													</LinkContainer>
-													<FontAwesomeIcon
-														icon={faTrash}
-														onClick={() => handleShowModal(employee._id)}
-														role="button"
-														style={{ color: "#f43f5e" }}
-													/>
-												</div>
+												<LinkContainer
+													to={`/employee/edit/${employee._id}`}
+													style={{ color: "#34d399", paddingRight: "6px" }}
+												>
+													<FontAwesomeIcon icon={faPenToSquare} role="button" />
+												</LinkContainer>
+												<FontAwesomeIcon
+													icon={faTrash}
+													onClick={() => handleShowModal(employee._id)}
+													role="button"
+													style={{ color: "#f43f5e" }}
+												/>
 											</td>
 										</tr>
 									))}

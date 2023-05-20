@@ -63,9 +63,32 @@ export const getDepartmentById = asyncHandler(async (req, res) => {
 	const department = await Department.findById(req.params.id);
 
 	if (department) {
+		console.log(department);
 		res.json(department);
 	} else {
 		res.status(404);
 		throw new Error("no department found");
+	}
+});
+
+// // @desc   Update Department only Admin
+// // @route  PUT /departments/:id
+// // @access Private
+
+export const updateDepartment = asyncHandler(async (req, res) => {
+	const department = await Department.findById(req.params.id);
+
+	if (department) {
+		department.name = req.body.name || department.name;
+
+		const updatedDepartment = await department.save();
+
+		res.json({
+			_id: updatedDepartment._id,
+			name: updatedDepartment.name,
+		});
+	} else {
+		res.status(404);
+		throw new Error("Department not found");
 	}
 });

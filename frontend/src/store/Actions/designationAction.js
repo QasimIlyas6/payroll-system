@@ -13,6 +13,9 @@ import {
 	DESIGNATION_LIST_FAIL,
 	DESIGNATION_LIST_REQUEST,
 	DESIGNATION_LIST_SUCCESS,
+	DESIGNATION_UPDATE_FAIL,
+	DESIGNATION_UPDATE_REQUEST,
+	DESIGNATION_UPDATE_SUCCESS,
 } from "../Constants/designationConstant";
 
 export const createDesignation =
@@ -147,6 +150,41 @@ export const getDesignationDetails = (id) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: DESIGNATION_DETAILS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+
+export const updateDesignation = (designation) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: DESIGNATION_UPDATE_REQUEST,
+		});
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+
+		const { data } = await axios.put(`/api/designations/:id`, designation, config);
+
+		dispatch({
+			type: DESIGNATION_UPDATE_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: DESIGNATION_UPDATE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

@@ -13,6 +13,9 @@ import {
 	DEDUCTION_LIST_FAIL,
 	DEDUCTION_LIST_REQUEST,
 	DEDUCTION_LIST_SUCCESS,
+	DEDUCTION_UPDATE_FAIL,
+	DEDUCTION_UPDATE_REQUEST,
+	DEDUCTION_UPDATE_SUCCESS,
 } from "../Constants/deductionConstant";
 
 export const createDeduction = (deduction) => async (dispatch, getState) => {
@@ -141,6 +144,40 @@ export const getDeductionDetails = (id) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: DEDUCTION_DETAILS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+export const updateDeduction = (deduction) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: DEDUCTION_UPDATE_REQUEST,
+		});
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+
+		const { data } = await axios.put(`/api/deductions/:id`, deduction, config);
+
+		dispatch({
+			type: DEDUCTION_UPDATE_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: DEDUCTION_UPDATE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

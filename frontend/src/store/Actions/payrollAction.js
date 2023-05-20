@@ -1,27 +1,26 @@
 import axios from "axios";
-
 import {
-	DEPARTMENT_CREATE_FAIL,
-	DEPARTMENT_CREATE_REQUEST,
-	DEPARTMENT_CREATE_SUCCESS,
-	DEPARTMENT_DELETE_FAIL,
-	DEPARTMENT_DELETE_REQUEST,
-	DEPARTMENT_DELETE_SUCCESS,
-	DEPARTMENT_DETAILS_FAIL,
-	DEPARTMENT_DETAILS_REQUEST,
-	DEPARTMENT_DETAILS_SUCCESS,
-	DEPARTMENT_LIST_FAIL,
-	DEPARTMENT_LIST_REQUEST,
-	DEPARTMENT_LIST_SUCCESS,
-	DEPARTMENT_UPDATE_FAIL,
-	DEPARTMENT_UPDATE_REQUEST,
-	DEPARTMENT_UPDATE_SUCCESS,
-} from "../Constants/departmentConstant";
+	PAYROLL_CREATE_FAIL,
+	PAYROLL_CREATE_REQUEST,
+	PAYROLL_CREATE_SUCCESS,
+	PAYROLL_DELETE_FAIL,
+	PAYROLL_DELETE_REQUEST,
+	PAYROLL_DELETE_SUCCESS,
+	PAYROLL_DETAILS_FAIL,
+	PAYROLL_DETAILS_REQUEST,
+	PAYROLL_DETAILS_SUCCESS,
+	PAYROLL_LIST_FAIL,
+	PAYROLL_LIST_REQUEST,
+	PAYROLL_LIST_SUCCESS,
+	PAYROLL_UPDATE_FAIL,
+	PAYROLL_UPDATE_REQUEST,
+	PAYROLL_UPDATE_SUCCESS,
+} from "../Constants/payrollConstant";
 
-export const createDepartment = (department) => async (dispatch, getState) => {
+export const createPayroll = (payroll) => async (dispatch, getState) => {
 	try {
 		dispatch({
-			type: DEPARTMENT_CREATE_REQUEST,
+			type: PAYROLL_CREATE_REQUEST,
 		});
 
 		const {
@@ -35,15 +34,15 @@ export const createDepartment = (department) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.post(`/api/departments`, department, config);
+		const { data } = await axios.post(`/api/payrolls`, payroll, config);
 
 		dispatch({
-			type: DEPARTMENT_CREATE_SUCCESS,
+			type: PAYROLL_CREATE_SUCCESS,
 			payload: data,
 		});
 	} catch (error) {
 		dispatch({
-			type: DEPARTMENT_CREATE_FAIL,
+			type: PAYROLL_CREATE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message
@@ -52,10 +51,10 @@ export const createDepartment = (department) => async (dispatch, getState) => {
 	}
 };
 
-export const deleteDepartment = (id) => async (dispatch, getState) => {
+export const deletePayroll = (id) => async (dispatch, getState) => {
 	try {
 		dispatch({
-			type: DEPARTMENT_DELETE_REQUEST,
+			type: PAYROLL_DELETE_REQUEST,
 		});
 
 		const {
@@ -69,14 +68,14 @@ export const deleteDepartment = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		await axios.delete(`/api/departments/${id}`, config);
+		await axios.delete(`/api/payrolls/${id}`, config);
 
 		dispatch({
-			type: DEPARTMENT_DELETE_SUCCESS,
+			type: PAYROLL_DELETE_SUCCESS,
 		});
 	} catch (error) {
 		dispatch({
-			type: DEPARTMENT_DELETE_FAIL,
+			type: PAYROLL_DELETE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message
@@ -85,11 +84,12 @@ export const deleteDepartment = (id) => async (dispatch, getState) => {
 	}
 };
 
-export const listDepartments = () => async (dispatch, getState) => {
+export const listPayrolls = () => async (dispatch, getState) => {
 	try {
 		dispatch({
-			type: DEPARTMENT_LIST_REQUEST,
+			type: PAYROLL_LIST_REQUEST,
 		});
+
 		const {
 			userLogin: { userInfo },
 		} = getState();
@@ -100,15 +100,16 @@ export const listDepartments = () => async (dispatch, getState) => {
 				Authorization: `Bearer ${userInfo.token}`,
 			},
 		};
-		const { data } = await axios.get(`/api/departments`, config);
+
+		const { data } = await axios.get(`/api/payrolls`, config);
 
 		dispatch({
-			type: DEPARTMENT_LIST_SUCCESS,
+			type: PAYROLL_LIST_SUCCESS,
 			payload: data,
 		});
 	} catch (error) {
 		dispatch({
-			type: DEPARTMENT_LIST_FAIL,
+			type: PAYROLL_LIST_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message
@@ -117,10 +118,10 @@ export const listDepartments = () => async (dispatch, getState) => {
 	}
 };
 
-export const getDepartmentDetails = (id) => async (dispatch, getState) => {
+export const getPayrollDetails = (id) => async (dispatch, getState) => {
 	try {
 		dispatch({
-			type: DEPARTMENT_DETAILS_REQUEST,
+			type: PAYROLL_DETAILS_REQUEST,
 		});
 
 		const {
@@ -134,15 +135,15 @@ export const getDepartmentDetails = (id) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.get(`/api/departments/${id}`, config);
+		const { data } = await axios.get(`/api/payrolls/${id}`, config);
 
 		dispatch({
-			type: DEPARTMENT_DETAILS_SUCCESS,
+			type: PAYROLL_DETAILS_SUCCESS,
 			payload: data,
 		});
 	} catch (error) {
 		dispatch({
-			type: DEPARTMENT_DETAILS_FAIL,
+			type: PAYROLL_DETAILS_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message
@@ -151,10 +152,10 @@ export const getDepartmentDetails = (id) => async (dispatch, getState) => {
 	}
 };
 
-export const updateDepartment = (department) => async (dispatch, getState) => {
+export const updatePayroll = (payroll) => async (dispatch, getState) => {
 	try {
 		dispatch({
-			type: DEPARTMENT_UPDATE_REQUEST,
+			type: PAYROLL_UPDATE_REQUEST,
 		});
 
 		const {
@@ -168,15 +169,15 @@ export const updateDepartment = (department) => async (dispatch, getState) => {
 			},
 		};
 
-		const { data } = await axios.put(`/api/departements/:id`, department, config);
+		const { data } = await axios.put(`/api/payrolls/:id`, payroll, config);
 
 		dispatch({
-			type: DEPARTMENT_UPDATE_SUCCESS,
+			type: PAYROLL_UPDATE_SUCCESS,
 			payload: data,
 		});
 	} catch (error) {
 		dispatch({
-			type: DEPARTMENT_UPDATE_FAIL,
+			type: PAYROLL_UPDATE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

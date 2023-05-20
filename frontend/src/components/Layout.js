@@ -27,6 +27,8 @@ import { listDesignations } from "../store/Actions/designationAction";
 import { listScale } from "../store/Actions/scaleAction";
 import { listEmployeeAllowances } from "../store/Actions/employeeAllowanceAction";
 import { listEmployeeDeductions } from "../store/Actions/employeeDeductionAction";
+import DepartmentEditScreen from "../screens/Department/DepartmentEditScreen";
+import PayrollScreen from "../screens/Payroll/PayrollScreen";
 
 const Layout = () => {
 	const dispatch = useDispatch();
@@ -71,12 +73,24 @@ const Layout = () => {
 				<div>
 					<main>
 						<Routes>
-							<Route path="/" element={<Dashboard />} />
+							<Route
+								path="/"
+								element={
+									<Dashboard
+										employeeList={employeeList}
+										departmentList={departmentList}
+									/>
+								}
+							/>
 							<Route
 								path="/departments"
 								element={
 									<DepartmentListScreen departmentList={departmentList} />
 								}
+							/>
+							<Route
+								path="/department/:id/edit"
+								element={<DepartmentEditScreen />}
 							/>
 							<Route
 								path="/allowances"
@@ -163,6 +177,7 @@ const Layout = () => {
 										departmentList={departmentList}
 										employeeList={employeeList}
 										allowanceList={allowanceList}
+										employeeAllowanceList={employeeAllowanceList}
 									/>
 								}
 							/>
@@ -173,6 +188,16 @@ const Layout = () => {
 										departmentList={departmentList}
 										employeeList={employeeList}
 										deductionList={deductionList}
+									/>
+								}
+							/>
+							<Route
+								path="/payroll-monthly"
+								element={
+									<PayrollScreen
+										employeeList={employeeList}
+										employeeAllowanceList={employeeAllowanceList}
+										employeeDeductionList={employeeDeductionList}
 									/>
 								}
 							/>

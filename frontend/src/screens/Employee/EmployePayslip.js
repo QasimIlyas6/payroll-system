@@ -151,9 +151,6 @@ const EmployeePayslip = (props) => {
 	let allowanceCount = 1;
 	let deductionCount = 1;
 
-	console.log("summary: ", summary);
-
-	// Render the component
 	return (
 		<Document>
 			<Page size="A4" style={styles.page}>

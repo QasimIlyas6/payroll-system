@@ -15,6 +15,7 @@ import {
 	DEPARTMENT_LIST_SUCCESS,
 	DEPARTMENT_UPDATE_FAIL,
 	DEPARTMENT_UPDATE_REQUEST,
+	DEPARTMENT_UPDATE_RESET,
 	DEPARTMENT_UPDATE_SUCCESS,
 } from "../Constants/departmentConstant";
 
@@ -74,7 +75,7 @@ export const departmentDeleteReducer = (state = {}, action) => {
 	}
 };
 
-export const departmentUpdateReducer = (state = {}, action) => {
+export const departmentUpdateReducer = (state = { department: {} }, action) => {
 	switch (action.type) {
 		case DEPARTMENT_UPDATE_REQUEST:
 			return { loading: true };
@@ -82,14 +83,14 @@ export const departmentUpdateReducer = (state = {}, action) => {
 			return {
 				loading: false,
 				success: true,
-				department: action.payload,
 			};
 		case DEPARTMENT_UPDATE_FAIL:
 			return {
 				loading: false,
-				success: false,
 				error: action.payload,
 			};
+		case DEPARTMENT_UPDATE_RESET:
+			return { department: {} };
 		default:
 			return state;
 	}

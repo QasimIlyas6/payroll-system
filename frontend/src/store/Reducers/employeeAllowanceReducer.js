@@ -1,6 +1,7 @@
 import {
 	EMPLOYEE_ALLOWANCE_CREATE_FAIL,
 	EMPLOYEE_ALLOWANCE_CREATE_REQUEST,
+	EMPLOYEE_ALLOWANCE_CREATE_RESET,
 	EMPLOYEE_ALLOWANCE_CREATE_SUCCESS,
 	EMPLOYEE_ALLOWANCE_DELETE_FAIL,
 	EMPLOYEE_ALLOWANCE_DELETE_REQUEST,
@@ -33,6 +34,11 @@ export const employeeAllowanceCreateReducer = (state = {}, action) => {
 			return {
 				loading: false,
 				error: action.payload,
+			};
+		case EMPLOYEE_ALLOWANCE_CREATE_RESET:
+			return {
+				success: false,
+				error: false,
 			};
 		default:
 			return state;

@@ -52,7 +52,7 @@ export const employeeListReducer = (state = { employees: [] }, action) => {
 		case EMPLOYEE_LIST_FAIL:
 			return { loading: false, error: action.payload };
 		case EMPLOYEE_LIST_RESET:
-			return { scales: [] };
+			return { employees: [] };
 		default:
 			return state;
 	}

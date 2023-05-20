@@ -115,9 +115,7 @@ const EmployeeDetailScreen = (props) => {
 		employeeAllowances &&
 		employeeDeductions &&
 		employeeDetailsLoading &&
-		bankDetailsLoading &&
-		allowances &&
-		deductions
+		bankDetailsLoading
 	) {
 		return <Loader />;
 	}
@@ -137,7 +135,7 @@ const EmployeeDetailScreen = (props) => {
 					<FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
 					Go Back
 				</Link>
-				{employee && employeeAllowances && allowances && (
+				{employee && employeeAllowances && allowances && deductions && (
 					<>
 						<div>
 							<PDFDownloadLink
@@ -182,7 +180,7 @@ const EmployeeDetailScreen = (props) => {
 			</div>
 
 			<ListGroup variant="flush" className="rounded border p-4">
-				<ListGroup.Item className="p-4">
+				<ListGroup.Item className="px-5 p-3">
 					<Row style={{ alignItems: "center" }}>
 						<Col md={10} className="text-center">
 							<h3>Board of Intermediate & Secondary Eduction</h3>
@@ -204,7 +202,8 @@ const EmployeeDetailScreen = (props) => {
 						</Col>
 					</Row>
 				</ListGroup.Item>
-				<ListGroup.Item className="p-4">
+
+				<ListGroup.Item className="px-5 p-3">
 					<div>
 						<p style={{ fontSize: "1.5rem", fontWeight: "bold" }}>
 							Personal Information of Mr{" "}
@@ -243,7 +242,7 @@ const EmployeeDetailScreen = (props) => {
 						</Col>
 					</Row>
 				</ListGroup.Item>
-				<ListGroup.Item className="p-4">
+				<ListGroup.Item className="px-5 p-3">
 					<Row className="d-flex justify-content-between align-items-center mb-2">
 						<Col md={6}>
 							<div className="info-item">
@@ -279,7 +278,7 @@ const EmployeeDetailScreen = (props) => {
 						</Col>
 					</Row>
 					<Row>
-						<Col md={8}>
+						<Col md={6}>
 							<div className="info-item">
 								<strong>Email:</strong>{" "}
 								<a
@@ -293,9 +292,17 @@ const EmployeeDetailScreen = (props) => {
 								<strong>Permanent Address:</strong> {employee.permanentAddress}
 							</div>
 						</Col>
+						<Col md={6}>
+							<div className="info-item">
+								<strong>Phone Number:</strong> {employee.phoneNumber}
+							</div>
+							<div className="info-item">
+								<strong>WhatsApp:</strong> {employee.whatsApp}
+							</div>
+						</Col>
 					</Row>
 				</ListGroup.Item>
-				<ListGroup.Item className="p-4">
+				<ListGroup.Item className="px-5 p-3">
 					<h3 className="secondary-heading">Pay and Allowances</h3>
 					<Table striped responsive border={"2px"} hover className="table-sm">
 						<thead>
@@ -330,7 +337,7 @@ const EmployeeDetailScreen = (props) => {
 					</Table>
 				</ListGroup.Item>
 
-				<ListGroup.Item className="p-4">
+				<ListGroup.Item className="px-5 p-3">
 					<h3 className="secondary-heading">Deductions</h3>
 					<Table striped responsive border={"2px"} hover className="table-sm">
 						<thead>
@@ -358,7 +365,7 @@ const EmployeeDetailScreen = (props) => {
 						</tbody>
 					</Table>
 				</ListGroup.Item>
-				<ListGroup.Item className="p-4">
+				<ListGroup.Item className="px-5 p-3">
 					<h2 className="secondary-heading">Summary</h2>
 					<Table striped responsive border={"2px"} hover className="table-sm">
 						<thead className="text-center">
@@ -383,7 +390,7 @@ const EmployeeDetailScreen = (props) => {
 						</tbody>
 					</Table>
 				</ListGroup.Item>
-				<ListGroup.Item className="p-4">
+				<ListGroup.Item className="px-5 p-3">
 					<h3>Bank Details</h3>
 					<Row className="d-flex justify-content-between align-items-center">
 						<Col md={4}>

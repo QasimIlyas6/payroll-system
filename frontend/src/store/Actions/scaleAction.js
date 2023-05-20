@@ -13,6 +13,9 @@ import {
 	SCALE_LIST_FAIL,
 	SCALE_LIST_REQUEST,
 	SCALE_LIST_SUCCESS,
+	SCALE_UPDATE_FAIL,
+	SCALE_UPDATE_REQUEST,
+	SCALE_UPDATE_SUCCESS,
 } from "../Constants/scaleConstant";
 
 export const createScale = (scale) => async (dispatch, getState) => {
@@ -141,6 +144,40 @@ export const getScaleDetails = (id) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: SCALE_DETAILS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+export const updateScale = (scale) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: SCALE_UPDATE_REQUEST,
+		});
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+
+		const { data } = await axios.put(`/api/scales/:id`, scale, config);
+
+		dispatch({
+			type: SCALE_UPDATE_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: SCALE_UPDATE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

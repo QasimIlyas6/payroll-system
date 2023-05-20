@@ -13,6 +13,9 @@ import {
 	ALLOWANCE_LIST_FAIL,
 	ALLOWANCE_LIST_REQUEST,
 	ALLOWANCE_LIST_SUCCESS,
+	ALLOWANCE_UPDATE_FAIL,
+	ALLOWANCE_UPDATE_REQUEST,
+	ALLOWANCE_UPDATE_SUCCESS,
 } from "../Constants/allowanceConstant";
 
 export const createAllowance = (allowance) => async (dispatch, getState) => {
@@ -140,6 +143,40 @@ export const getAllowanceDetails = (id) => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: ALLOWANCE_DETAILS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message,
+		});
+	}
+};
+
+export const updateAllowance = (allowance) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: ALLOWANCE_UPDATE_REQUEST,
+		});
+
+		const {
+			userLogin: { userInfo },
+		} = getState();
+
+		const config = {
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${userInfo.token}`,
+			},
+		};
+
+		const { data } = await axios.put(`/api/allowances/:id`, allowance, config);
+
+		dispatch({
+			type: ALLOWANCE_UPDATE_SUCCESS,
+			payload: data,
+		});
+	} catch (error) {
+		dispatch({
+			type: ALLOWANCE_UPDATE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message
